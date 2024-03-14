@@ -81,5 +81,18 @@ rm -rf $OUTPUT/.$input_scheme_name && \
   cp -R $OUTPUT/.$input_scheme_name/*.zip $OUTPUT
 
 
+# 薄荷输入法
+# 方案来源：https://github.com/Mintimate/oh-my-rime
+input_scheme_name=oh-my-rime
+rm -rf $OUTPUT/.$input_scheme_name && \
+  git clone -b main --depth 1 https://github.com/Mintimate/$input_scheme_name $OUTPUT/.$input_scheme_name && (
+    cd $OUTPUT/.$input_scheme_name
+    # 删除无效的 rime.lua 文件
+    rm -rf rime.lua
+    zip -r $input_scheme_name.zip ./*
+  ) && \
+  cp -R $OUTPUT/.$input_scheme_name/*.zip $OUTPUT
+
+
 # copy
 cp -R $OUTPUT/*.zip ${DST_PATH}/ 
